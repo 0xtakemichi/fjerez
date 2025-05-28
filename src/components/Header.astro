@@ -1,0 +1,29 @@
+<header class="flex justify-between items-center py-4 px-4 md:px-8">
+    <img class="rounded-full w-10 h-10" src="" alt="fjerez photo">
+
+    <!-- Menú hamburguesa para mobile -->
+    <div class="md:hidden ml-auto">
+        <input id="menu-toggle" type="checkbox" class="hidden peer" />
+        <label for="menu-toggle" class="flex flex-col justify-center items-center w-10 h-10 cursor-pointer">
+            <span class="block w-7 h-0.5 bg-gray-800 mb-1.5 transition-all duration-300"></span>
+            <span class="block w-7 h-0.5 bg-gray-800 mb-1.5 transition-all duration-300"></span>
+            <span class="block w-7 h-0.5 bg-gray-800 transition-all duration-300"></span>
+        </label>
+        <nav class="absolute right-4 top-16 bg-white rounded-lg shadow-lg p-6 flex flex-col gap-y-4 opacity-95 z-50 w-48 max-w-[90vw] hidden peer-checked:flex">
+            <a href="/" class="text-gray-800 hover:text-gray-600">Inicio</a>
+            <a href="/about" class="text-gray-800 hover:text-gray-600">Sobre mí</a>
+            <a href="/projects" class="text-gray-800 hover:text-gray-600">Proyectos</a>
+            <a href="/contact" class="text-gray-800 hover:text-gray-600">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- Navbar desktop -->
+    <nav class="hidden md:flex flex-row gap-x-10 opacity-75 ml-auto">
+        <ul class="flex flex-row gap-x-6">
+            <li><a href="/" class="text-gray-800 hover:text-gray-600">Inicio</a></li>
+            <li><a href="/about" class="text-gray-800 hover:text-gray-600">Sobre mí</a></li>
+            <li><a href="/projects" class="text-gray-800 hover:text-gray-600">Proyectos</a></li>
+            <li><a href="/contact" class="text-gray-800 hover:text-gray-600">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
