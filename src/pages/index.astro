@@ -1,13 +1,15 @@
 ---
-import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
 import Background from '../components/Background.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
+<Layout title="Software Engineer">
 	<Background />
-	<Header />
-	<Footer />
+	<main class="flex justify-center items-center flex-1">
+		<section>
+			<h1 class="text-5xl font-bold gap-x-4 pb-10">Soy Felipe Jerez, Software Engineer</h1>
+			<h2>Ingeniero en Informática titulado en INACAP en la sede Santiago Centro</h2>
+			<p>Actualmente estoy trabajando como Software Engineer en <a href="https://www.ingenieriabim.cl/">IngeBIM</a></p>
+		</section>
+	</main>
 </Layout>
