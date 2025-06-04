@@ -1,0 +1,23 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title: "Desarrollador Full Stack",
+    company: "IngeBIM",
+    description:
+      "Desarrollador Full Stack en IngeBIM, empresa dedicada a la implementación de BIM en proyectos de construcción. Encargado del desarrollo de aplicaciones web para la gestión de proyectos, así como la integración y automatización de tecnologías BIM en el flujo de trabajo.",
+    link: "https://linkedin.com/company/ingebim",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
