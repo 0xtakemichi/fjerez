@@ -1,0 +1,76 @@
+---
+import SectionContainer from './SectionContainer.astro';
+
+interface Project {
+    title: string;
+    description: string;
+    image: string;
+    technologies: string[];
+    github: string;
+    demo?: string;
+}
+
+const projects: Project[] = [
+    {
+        title: "Portfolio Personal",
+        description: "Mi portfolio personal desarrollado con Astro y Tailwind CSS. Un sitio web moderno y minimalista que muestra mis proyectos y habilidades como desarrollador.",
+        image: "/portfolio-preview.png",
+        technologies: ["Astro", "Tailwind CSS", "TypeScript"],
+        github: "https://github.com/0xtakemichi/portfolio",
+        demo: "https://felipejerez.dev"
+    },
+    {
+        title: "Sistema de Gestión BIM",
+        description: "Sistema integral para la gestión de proyectos BIM, desarrollado con Next.js y TypeScript. Incluye gestión de modelos 3D, documentación y colaboración en tiempo real.",
+        image: "/bim-preview.png",
+        technologies: ["Next.js", "TypeScript", "Three.js", "Tailwind CSS"],
+        github: "https://github.com/0xtakemichi/bim-system",
+        demo: "https://bim-system.vercel.app"
+    }
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {projects.map((project) => (
+        <article class="bg-background/50 backdrop-blur-sm rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] cursor-pointer">
+            <div class="relative aspect-video">
+                <img 
+                    src={project.image} 
+                    alt={`Preview de ${project.title}`}
+                    class="w-full h-full object-cover"
+                />
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
+                <p class="text-sm mb-4 opacity-80">{project.description}</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                        <span class="px-2 py-1 text-xs rounded-full bg-primary/10">
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+                <div class="flex gap-4">
+                    <a 
+                        href={project.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="text-sm hover:opacity-80 transition-opacity"
+                    >
+                        GitHub →
+                    </a>
+                    {project.demo && (
+                        <a 
+                            href={project.demo} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="text-sm hover:opacity-80 transition-opacity"
+                        >
+                            Demo →
+                        </a>
+                    )}
+                </div>
+            </div>
+        </article>
+    ))}
+</div>
