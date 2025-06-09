@@ -1,76 +1,88 @@
 ---
-import SectionContainer from './SectionContainer.astro';
+import GitHub from "../icons/GitHub.astro"
+import NextJS from "../icons/NextJS.astro"
+import Tailwind from "../icons/Tailwind.astro"
+import Link from "../icons/Link.astro"
+import LinkButton from "./LinkButton.astro"
 
-interface Project {
-    title: string;
-    description: string;
-    image: string;
-    technologies: string[];
-    github: string;
-    demo?: string;
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
 }
 
-const projects: Project[] = [
-    {
-        title: "Portfolio Personal",
-        description: "Mi portfolio personal desarrollado con Astro y Tailwind CSS. Un sitio web moderno y minimalista que muestra mis proyectos y habilidades como desarrollador.",
-        image: "/portfolio-preview.png",
-        technologies: ["Astro", "Tailwind CSS", "TypeScript"],
-        github: "https://github.com/0xtakemichi/portfolio",
-        demo: "https://felipejerez.dev"
-    },
-    {
-        title: "Sistema de Gestión BIM",
-        description: "Sistema integral para la gestión de proyectos BIM, desarrollado con Next.js y TypeScript. Incluye gestión de modelos 3D, documentación y colaboración en tiempo real.",
-        image: "/bim-preview.png",
-        technologies: ["Next.js", "TypeScript", "Three.js", "Tailwind CSS"],
-        github: "https://github.com/0xtakemichi/bim-system",
-        demo: "https://bim-system.vercel.app"
-    }
-];
+const PROJECTS = [
+  {
+    title: "Portfolio Personal",
+    description: "Mi portfolio personal desarrollado con Astro y Tailwind CSS. Un sitio web moderno y minimalista que muestra mis proyectos y habilidades como desarrollador.",
+    link: "https://felipejerez.dev",
+    github: "https://github.com/0xtakemichi/portfolio",
+    image: "/portfolio-preview.png",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+  {
+    title: "Sistema de Gestión BIM",
+    description: "Sistema integral para la gestión de proyectos BIM, desarrollado con Next.js y TypeScript. Incluye gestión de modelos 3D, documentación y colaboración en tiempo real.",
+    link: "https://bim-system.vercel.app",
+    github: "https://github.com/0xtakemichi/bim-system",
+    image: "/bim-preview.png",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+]
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {projects.map((project) => (
-        <article class="bg-background/50 backdrop-blur-sm rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] cursor-pointer">
-            <div class="relative aspect-video">
-                <img 
-                    src={project.image} 
-                    alt={`Preview de ${project.title}`}
-                    class="w-full h-full object-cover"
-                />
-            </div>
-            <div class="p-6">
-                <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
-                <p class="text-sm mb-4 opacity-80">{project.description}</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech) => (
-                        <span class="px-2 py-1 text-xs rounded-full bg-primary/10">
-                            {tech}
-                        </span>
-                    ))}
-                </div>
-                <div class="flex gap-4">
-                    <a 
-                        href={project.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        class="text-sm hover:opacity-80 transition-opacity"
-                    >
-                        GitHub →
-                    </a>
-                    {project.demo && (
-                        <a 
-                            href={project.demo} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="text-sm hover:opacity-80 transition-opacity"
-                        >
-                            Demo →
-                        </a>
-                    )}
-                </div>
-            </div>
-        </article>
-    ))}
+  {
+    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+      <article class="flex flex-col bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group">
+        <div class="relative w-full h-48">
+          <img 
+            alt={title} 
+            class="object-cover w-full h-full transition duration-500 group-hover:scale-105" 
+            loading="lazy" 
+            src={image} 
+          />
+        </div>
+
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+            {title}
+          </h3>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            {tags.map((tag) => (
+              <span class={`flex items-center gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            ))}
+          </div>
+
+          <p class="text-gray-700 dark:text-gray-400 mb-6">{description}</p>
+          
+          <footer class="flex items-center gap-4">
+            {github && (
+              <LinkButton href={github}>
+                <GitHub class="size-5" />
+                Code
+              </LinkButton>
+            )}
+            {link && (
+              <LinkButton href={link}>
+                <Link class="size-4" />
+                Preview
+              </LinkButton>
+            )}
+          </footer>
+        </div>
+      </article>
+    ))
+  }
 </div>
