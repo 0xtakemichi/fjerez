@@ -8,6 +8,7 @@ import React from "../icons/React.astro"
 import Firebase from "../icons/Firebase.astro"
 import TypeScript from "../icons/TypeScript.astro"
 import Vercel from "../icons/Vercel.astro"
+import JavaScript from "../icons/JavaScript.astro"
 
 const TAGS = {
   NEXT: {
@@ -40,6 +41,11 @@ const TAGS = {
     class: "bg-black   text-white",
     icon: Vercel,
   },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-[#003159] text-white",
+    icon: JavaScript,
+  },
 }
 
 const PROJECTS = [
@@ -52,12 +58,36 @@ const PROJECTS = [
     tags: [TAGS.NEXT, TAGS.TAILWIND],
   },
   {
-    title: "Sistema de Gestión BIM",
+    title: "BIMViewer Web App Gestión de Proyectos BIM",
     description: "Sistema integral para la gestión de proyectos BIM, desarrollado con React y TypeScript. Incluye gestión de modelos 3D, documentación y colaboración en proyectos.",
     link: "https://bimviewer.vercel.app",
     github: "https://github.com/0xtakemichi/bimviewer-web-app",
     image: "/projects/bimviewer.webp",
     tags: [TAGS.TYPESCRIPT, TAGS.REACT, TAGS.FIREBASE, TAGS.VERCEL],
+  },
+  {
+    title: "Monorepositorio de proyectos con React",
+    description: "Un monorepositorio que contiene varios proyectos de React para aprender y practicar.",
+    link: "",
+    github: "https://github.com/0xtakemichi/hello-react",
+    image: "",
+    tags: [TAGS.REACT, TAGS.TAILWIND],
+  },
+  {
+    title: "Hello JavaScript",
+    description: "Un repositorio simple para aprender JavaScript.",
+    link: "",
+    github: "https://github.com/0xtakemichi/hello-javascript",
+    image: "",
+    tags: [TAGS.JAVASCRIPT],
+  },
+  {
+    title: "BIMViewer",
+    description: "Implementación de un visor 3D con Three.js para visualizar modelos BIM IFC.",
+    link: "https://bim-app.vercel.app/",
+    github: "https://github.com/0xtakemichi/bim-viewer",
+    image: "",
+    tags: [TAGS.TYPESCRIPT, TAGS.REACT, TAGS.VERCEL],
   },
 ]
 ---
