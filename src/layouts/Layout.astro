@@ -12,13 +12,12 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
@@ -41,11 +40,16 @@ const { title, description } = Astro.props;
 		flex-direction: column;
 		height: 100vh;
 	}
-	@media (prefers-color-scheme: dark) {
-		body {
-			background: #000;
-		}
-	}
+	  .dark body {
+    background: #000;
+    color: #fff;
+  }
+  
+  body {
+    background: #fff;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+  }
 	@media (prefers-reduced-motion: reduce) {
 		html {
 			scroll-behavior: auto;

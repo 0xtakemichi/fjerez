@@ -1,0 +1,47 @@
+---
+import Moon from '../icons/Moon.astro';
+import Sun from '../icons/Sun.astro';
+---
+
+<button 
+  id="theme-toggle" 
+  type="button" 
+  class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+  aria-label="Cambiar tema"
+>
+  <!-- Íconos que cambian según el tema -->
+  <span class="block dark:hidden">
+    <Moon />
+  </span>
+  <span class="hidden dark:block">
+    <Sun />
+  </span>
+</button>
+
+<script is:inline>
+  const themeToggle = document.getElementById('theme-toggle');
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const currentTheme = localStorage.getItem('theme');
+
+  // Aplicar el tema guardado o el del sistema
+  if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+
+  if (themeToggle) {
+    // Cambiar tema al hacer clic
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Detectar cambios en la preferencia del sistema
+    prefersDarkScheme.addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.classList.toggle('dark', e.matches);
+      }
+    });
+  }
+</script>
